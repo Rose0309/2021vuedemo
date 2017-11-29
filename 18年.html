@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="2017放假倒计时<">
+<meta name="copyright" content="2017放假倒计时<">
+<title>2017放假倒计时</title>
+<style>
+*{margin:0; padding:0;}
+body{
+	background:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505111694964&di=5032964c5ddec09c54589b364acff48e&imgtype=0&src=http%3A%2F%2Fwww.1tong.com%2Fuploads%2Fwallpaper%2Fdistinct%2F304-5-1920x1080.jpg') no-repeat;
+	color:#fff;
+	font-size:120px;
+	cursor: pointer;
+	background-size:cover;
+	padding-left:450px;
+}
+span{
+	display:block;
+	color:#fa3c3c;
+}
+</style>
+<script>
+function toDou(iNum){
+	return iNum<10?'0'+iNum:''+iNum;
+}
+window.onload=function(){
+	var oS = document.getElementsByTagName('span')[0];
+	var oTarget = new Date();
+	oTarget.setFullYear(2018,01,16);
+	oTarget.setHours(18,0,0,0);
+	var iTarget = oTarget.getTime();
+	function countDown(){
+		var oNow = new Date();
+		var iNow = oNow.getTime();
+		var s = parseInt((iTarget-iNow)/1000);
+		var d = parseInt(s/86400);
+		s%=86400;
+		var h = parseInt(s/3600);
+		s%=3600;
+		var m = parseInt(s/60);
+		s%=60;
+		oS.innerHTML=d+'天<br> '+toDou(h)+'小时:<br>'+toDou(m)+'分:'+toDou(s)+'秒';
+	}
+	countDown();
+	setInterval(function(){
+		countDown();
+	},1000);
+};
+</script>
+</head>
+
+<body>
+<br><span>0天 00:00:00</span>
+</body>
+</html>
